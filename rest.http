@@ -7,7 +7,7 @@ POST http://localhost:3000/cart HTTP/1.1
 content-type: application/json
 
 {
-    "id": "req.body.id",
+    "id": "3",
     "title": "req.body.title",
     "description": "req.body.description",
     "price": "req.body.price",
@@ -22,4 +22,9 @@ content-type: application/json
 ###
 
 DELETE http://localhost:3000/cart HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3000/products HTTP/1.1
 content-type: application/json
