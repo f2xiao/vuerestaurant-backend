@@ -7,17 +7,30 @@ POST http://localhost:3000/cart HTTP/1.1
 content-type: application/json
 
 {
-    "id": "3",
-    "title": "req.body.title",
-    "description": "req.body.description",
-    "price": "req.body.price",
-    "image_tag": "req.body.image_tag", 
-    "quantity":"1" 
+    "id": 4,
+    "title": "three mix",
+    "description": "potatoes, eggplants and green pepper",
+    "price": 11.99,
+    "image_tag": "three-mix.png", 
+    "quantity":1 
+}
+###
+
+POST http://localhost:3000/cart HTTP/1.1
+content-type: application/json
+
+{
+    "id": 3,
+    "title": "six bao",
+    "description": "pork, mushrooms and cabbages",
+    "price": 15.99,
+    "image_tag": "six-bao.png",
+    "quantity":1 
 }
 
 ###
 
-DELETE http://localhost:3000/cart/3 HTTP/1.1
+DELETE http://localhost:3000/cart/4 HTTP/1.1
 content-type: application/json
 ###
 
