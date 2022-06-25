@@ -23,13 +23,15 @@ app.use(express.urlencoded({ extended: true }));
  * -------------- SESSION SETUP ----------------
  */
 
-const MongoStore = require('connect-mongo')(session);
-
 app.use(session({
   secret: process.env['SECRET'],
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: true },
+  store: MongoStore.create({
+    mongoUrl: `mongodb+srv://${process.env['MONGO_USER']
+}:${process.env['MONGO_PASSWORD']}@cluster0.pcocp.mongodb.net/${process.env['MONGO_DB']}?retryWrites=true&w=majority`,
+  })
 }))
 
 
