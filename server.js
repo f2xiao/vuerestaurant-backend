@@ -1,13 +1,26 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cartRoutes = require('./routes/cartRoutes.js');
 const productsRoutes = require('./routes/productsRoutes');
 
+/**
+ * -------------- GENERAL SETUP ----------------
+ */
+
+// Create the Express application
 const app = express();
 
+// set the port number
 app.set('port', (process.env.PORT || 3000));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+// middlewares to parse request bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+/**
+ * -------------- SESSION SETUP ----------------
+ */
+
+
 
 // Middlewares
 app.use((req, res, next) => {
@@ -17,10 +30,17 @@ app.use((req, res, next) => {
   next();
 });
 
+/**
+ * -------------- ROUTES ----------------
+ */
+
 // Routes
 app.use('/cart', cartRoutes);
 app.use('/products', productsRoutes);
 
+/**
+ * -------------- SERVER ----------------
+ */
 app.listen(app.get('port'), () => {
     console.log(`Find the server at: http://localhost:${app.get('port')}/`);
 });
