@@ -1,4 +1,7 @@
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const connection = require('./config/database');
 const cartRoutes = require('./routes/cartRoutes.js');
 const productsRoutes = require('./routes/productsRoutes');
 
@@ -20,6 +23,14 @@ app.use(express.urlencoded({ extended: true }));
  * -------------- SESSION SETUP ----------------
  */
 
+const MongoStore = require('connect-mongo')(session);
+
+app.use(session({
+  secret: process.env['SECRET'],
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 
 // Middlewares
